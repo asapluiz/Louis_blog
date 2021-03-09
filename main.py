@@ -149,13 +149,13 @@ def show_post(post_id):
             flash("please log in before commenting")
             return redirect(url_for('login'))
         else:
-            print(form.comment_text.data)
+
             comment = Comment(text= request.form.get('comment_text'),
                               comment_author= current_user,
                               parent_post= requested_post)
             db.session.add(comment)
             db.session.commit()
-            return redirect(url_for('show_post', id=post_id))
+            return redirect(url_for('show_post', post_id=post_id))
 
 
 
